@@ -46,76 +46,76 @@ CREATE TABLE IF NOT EXISTS portfolio_item (
     item_quantidade REAL,
     item_preco REAL,
     portfolio_id INTEGER,
-    acoes_id INTEGER,
+    stocks_id INTEGER,
 
     FOREIGN KEY (portfolio_id) REFERENCES portfolio (portfolio_id) ON DELETE CASCADE,
-    FOREIGN KEY(acoes_id) REFERENCES acoes(acoes_id) ON DELETE CASCADE 
+    FOREIGN KEY(stocks_id) REFERENCES stocks(stocks_id) ON DELETE CASCADE 
 );
 `;
 
-const acoes_SCHEMA = `
-CREATE TABLE IF NOT EXISTS acoes (
-    acoes_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    acoes_codigo VARCHAR(10) NOT NULL UNIQUE, 
-    acoes_descricao VARCHAR(30) DEFAULT ('') NOT NULL, 
-    acoes_preco REAL
+const stocks_SCHEMA = `
+CREATE TABLE IF NOT EXISTS stocks (
+    stocks_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    stocks_codigo VARCHAR(10) NOT NULL UNIQUE, 
+    stocks_descricao VARCHAR(30) DEFAULT ('') NOT NULL, 
+    stocks_preco REAL
 )
 `;
 
-const INSERT_acoes_1 = `
-INSERT INTO acoes (
-    acoes_codigo, 
-    acoes_descricao,
-    acoes_preco
-) SELECT 'ALUR3', 'Alura ON', 25.10 WHERE NOT EXISTS (SELECT * FROM acoes WHERE acoes_codigo = 'ALUR3')
+const INSERT_stocks_1 = `
+INSERT INTO stocks (
+    stocks_codigo, 
+    stocks_descricao,
+    stocks_preco
+) SELECT 'ALUR3', 'Alura ON', 25.10 WHERE NOT EXISTS (SELECT * FROM stocks WHERE stocks_codigo = 'ALUR3')
 `;
 
-const INSERT_acoes_2 = `
-INSERT INTO acoes (
-    acoes_codigo, 
-    acoes_descricao,
-    acoes_preco
-) SELECT 'ALUR4', 'Alura PN', 25.10 WHERE NOT EXISTS (SELECT * FROM acoes WHERE acoes_codigo = 'ALUR4')
+const INSERT_stocks_2 = `
+INSERT INTO stocks (
+    stocks_codigo, 
+    stocks_descricao,
+    stocks_preco
+) SELECT 'ALUR4', 'Alura PN', 25.10 WHERE NOT EXISTS (SELECT * FROM stocks WHERE stocks_codigo = 'ALUR4')
 `;
 
-const INSERT_acoes_3 = `
-INSERT INTO acoes (
-    acoes_codigo, 
-    acoes_descricao,
-    acoes_preco
-) SELECT 'CAEL3', 'Caellum ON', 25.10 WHERE NOT EXISTS (SELECT * FROM acoes WHERE acoes_codigo = 'CAEL3')
+const INSERT_stocks_3 = `
+INSERT INTO stocks (
+    stocks_codigo, 
+    stocks_descricao,
+    stocks_preco
+) SELECT 'CAEL3', 'Caellum ON', 25.10 WHERE NOT EXISTS (SELECT * FROM stocks WHERE stocks_codigo = 'CAEL3')
 `;
 
-const INSERT_acoes_4 = `
-INSERT INTO acoes (
-    acoes_codigo, 
-    acoes_descricao,
-    acoes_preco
-) SELECT 'CASC3', 'Casa do codigo ON', 25.10 WHERE NOT EXISTS (SELECT * FROM acoes WHERE acoes_codigo = 'CASC3')
+const INSERT_stocks_4 = `
+INSERT INTO stocks (
+    stocks_codigo, 
+    stocks_descricao,
+    stocks_preco
+) SELECT 'CASC3', 'Casa do codigo ON', 25.10 WHERE NOT EXISTS (SELECT * FROM stocks WHERE stocks_codigo = 'CASC3')
 `;
 
-const INSERT_acoes_5 = `
-INSERT INTO acoes (
-    acoes_codigo, 
-    acoes_descricao,
-    acoes_preco
-) SELECT 'JAVA3', 'JAVA ON', 25.10 WHERE NOT EXISTS (SELECT * FROM acoes WHERE acoes_codigo = 'JAVA3')
+const INSERT_stocks_5 = `
+INSERT INTO stocks (
+    stocks_codigo, 
+    stocks_descricao,
+    stocks_preco
+) SELECT 'JAVA3', 'JAVA ON', 25.10 WHERE NOT EXISTS (SELECT * FROM stocks WHERE stocks_codigo = 'JAVA3')
 `;
 
-const INSERT_acoes_6 = `
-INSERT INTO acoes (
-    acoes_codigo, 
-    acoes_descricao,
-    acoes_preco
-) SELECT 'PHPP3', 'PHP ON', 25.10 WHERE NOT EXISTS (SELECT * FROM acoes WHERE acoes_codigo = 'PHPP3')
+const INSERT_stocks_6 = `
+INSERT INTO stocks (
+    stocks_codigo, 
+    stocks_descricao,
+    stocks_preco
+) SELECT 'PHPP3', 'PHP ON', 25.10 WHERE NOT EXISTS (SELECT * FROM stocks WHERE stocks_codigo = 'PHPP3')
 `;
 
-const INSERT_acoes_7 = `
-INSERT INTO acoes (
-    acoes_codigo, 
-    acoes_descricao,
-    acoes_preco
-) SELECT 'NETC3', 'Net Core ON', 25.10 WHERE NOT EXISTS (SELECT * FROM acoes WHERE acoes_codigo = 'NETC3')
+const INSERT_stocks_7 = `
+INSERT INTO stocks (
+    stocks_codigo, 
+    stocks_descricao,
+    stocks_preco
+) SELECT 'NETC3', 'Net Core ON', 25.10 WHERE NOT EXISTS (SELECT * FROM stocks WHERE stocks_codigo = 'NETC3')
 `;
 
 db.serialize(() => {
@@ -123,14 +123,14 @@ db.serialize(() => {
   db.run(USER_SCHEMA);
   db.run(INSERT_DEFAULT_USER_1);
   db.run(INSERT_DEFAULT_USER_2);
-  db.run(acoes_SCHEMA);
-  db.run(INSERT_acoes_1);
-  db.run(INSERT_acoes_2);
-  db.run(INSERT_acoes_3);
-  db.run(INSERT_acoes_4);
-  db.run(INSERT_acoes_5);
-  db.run(INSERT_acoes_6);
-  db.run(INSERT_acoes_7);
+  db.run(stocks_SCHEMA);
+  db.run(INSERT_stocks_1);
+  db.run(INSERT_stocks_2);
+  db.run(INSERT_stocks_3);
+  db.run(INSERT_stocks_4);
+  db.run(INSERT_stocks_5);
+  db.run(INSERT_stocks_6);
+  db.run(INSERT_stocks_7);
   db.run(PORTFOLIO_SCHEMA);
   db.run(PORTFOLIO_ITEM_SCHEMA);
 
@@ -138,8 +138,8 @@ db.serialize(() => {
     console.log("Users");
     console.log(user);
   });
-  db.each("SELECT * FROM acoes", (err, user) => {
-    console.log("acoes");
+  db.each("SELECT * FROM stocks", (err, user) => {
+    console.log("stocks");
     console.log(user);
   });
 });

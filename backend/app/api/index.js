@@ -1,5 +1,5 @@
-const acoesAPI = require("./acoes");
+const stocksAPI = require("./stocks");
 const userAPI = require("./user");
 const portfolioAPI = require("./portfolio");
 
-module.exports = { acoesAPI, userAPI, portfolioAPI };
+module.exports = { stocksAPI, userAPI, portfolioAPI };

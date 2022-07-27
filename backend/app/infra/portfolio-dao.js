@@ -100,18 +100,18 @@ class PortfolioDao {
   }
 
   insertItem(portfolio_id, item) {
-    const { acoes_id, item_quantidade, item_preco } = item;
+    const { stocks_id, item_quantidade, item_preco } = item;
     return new Promise((resolve, reject) => {
       this._db.run(
         `
         INSERT INTO portfolio_item (
           portfolio_id,
-          acoes_id,	
+          stocks_id,	
           item_quantidade,
           item_preco
         ) values (?,?,?,?)
       `,
-        [portfolio_id, acoes_id, item_quantidade, item_preco],
+        [portfolio_id, stocks_id, item_quantidade, item_preco],
         (err) => {
           if (err) {
             console.log(err);
@@ -197,7 +197,7 @@ class PortfolioDao {
             item_id,
             item_quantidade,
             item_preco,
-            acoes_id
+            stocks_id
           FROM portfolio 
           LEFT JOIN portfolio_item  ON
             portfolio.portfolio_id = portfolio_item.portfolio_id
@@ -224,7 +224,7 @@ class PortfolioDao {
             const items = rows.map((row) => ({
               item_quantidade: row.item_quantidade,
               item_preco: row.item_preco,
-              acoes_id: row.acoes_id,
+              stocks_id: row.stocks_id,
             }));
             return resolve({ ...header, items });
           }

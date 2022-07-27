@@ -65,8 +65,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         link: '/home',
       },
       {
-        label: 'Ações',
-        link: '/home/acoes',
+        label: 'Stocks',
+        link: '/home/stocks',
       },
     ];
     return menu;

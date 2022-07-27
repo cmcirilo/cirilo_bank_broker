@@ -1,12 +1,12 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'app-card-acoes',
-  templateUrl: './card-acoes.component.html',
-  styleUrls: ['./card-acoes.component.css'],
+  selector: 'app-card-stocks',
+  templateUrl: './card-stocks.component.html',
+  styleUrls: ['./card-stocks.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
-export class CardAcoesComponent implements OnInit {
+export class CardstocksComponent implements OnInit {
   @Input() acao: any;
 
   constructor() {}

@@ -8,5 +8,5 @@ interface PortFolio {
 interface PortFolioItem {
   item_quantidade: number;
   item_preco: number;
-  acoes_id: number;
+  stocks_id: number;
 }

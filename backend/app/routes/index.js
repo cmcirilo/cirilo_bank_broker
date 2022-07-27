@@ -1,5 +1,5 @@
-const acoesRoutes = require("./acoes");
+const stocksRoutes = require("./stocks");
 const portfolioRoutes = require("./portfolio");
 const userRoutes = require("./user");
 
-module.exports = { acoesRoutes, portfolioRoutes, userRoutes };
+module.exports = { stocksRoutes, portfolioRoutes, userRoutes };
