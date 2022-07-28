@@ -4,4 +4,13 @@
       <po-input p-label="Stocks" [formControl]="stocksInput"></po-input>
     </div>
   </div>
+
+  <div class="td-page-wrapper" *ngIf="stocks; else elseBlock">
+    <div class="po-row">
+      <div class="po-md-4" *ngFor="let stock of stocks">
+        <app-card-stocks [stock]="stock"></app-card-stocks>
+      </div>
+    </div>
+  </div>
+  <ng-template #elseBlock><p>Data not found.</p></ng-template>
 </po-page-default>
