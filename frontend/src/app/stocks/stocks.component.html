@@ -5,7 +5,10 @@
     </div>
   </div>
 
-  <div class="td-page-wrapper" *ngIf="stocks; else elseBlock">
+  <div
+    class="td-page-wrapper"
+    *ngIf="stocks$ | async as stocks; else elseBlock"
+  >
     <div class="po-row">
       <div class="po-md-4" *ngFor="let stock of stocks">
         <app-card-stocks [stock]="stock"></app-card-stocks>

@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Stocks } from './model/stocks';
 import { StocksService } from './stocks.service';
 
 @Component({
@@ -8,15 +7,9 @@ import { StocksService } from './stocks.service';
   templateUrl: './stocks.component.html',
   styleUrls: ['./stocks.component.css'],
 })
-export class stocksComponent implements OnInit {
+export class StocksComponent {
   stocksInput = new FormControl();
-  stocks: Stocks;
+  stocks$ = this.stocksService.getStocks();
 
-  constructor(private StocksService: StocksService) {}
-
-  ngOnInit(): void {
-    this.StocksService.getStocks().subscribe((response) => {
-      this.stocks = response.payload;
-    });
-  }
+  constructor(private stocksService: StocksService) {}
 }
