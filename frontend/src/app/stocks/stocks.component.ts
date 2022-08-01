@@ -1,7 +1,13 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { merge } from 'rxjs';
-import { debounceTime, filter, switchMap, tap } from 'rxjs/operators';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  filter,
+  switchMap,
+  tap,
+} from 'rxjs/operators';
 import { StocksService } from './stocks.service';
 
 const WAITING_TIME = 300;
@@ -25,6 +31,7 @@ export class StocksComponent {
     }),
     tap(console.log),
     filter((valueInput) => valueInput.length >= 3 || !valueInput.length),
+    distinctUntilChanged(),
     switchMap((valueInput) => this.stocksService.getStocks(valueInput))
   );
 
