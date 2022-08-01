@@ -14,10 +14,10 @@ api.add = async (req, res) => {
 };
 
 api.list = async (req, res) => {
-	let { valor } = req.query;
-	valor = valor || '';
-	console.log(`Find Stock by ${valor}`);
-	const stocks = await new stocksDao(req.db).listAll(valor);
+	let { value } = req.query;
+	value = value || '';
+	console.log(`Find Stock by ${value}`);
+	const stocks = await new stocksDao(req.db).listAll(value);
 	const result = { payload: stocks };
 	res.json(result);
 };
